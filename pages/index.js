@@ -1,3 +1,11 @@
+import Link from 'next/link';
+
 export default function Home() {
-  return <h1>Groovie</h1>;
+  return (
+    <div>
+      <Link href='/signin'>
+        <a>Sign in</a>
+      </Link>
+    </div>
+  );
 }
