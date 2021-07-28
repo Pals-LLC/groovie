@@ -8,7 +8,15 @@ const SignIn = () => {
       {!session && (
         <>
           Not signed in <br />
-          <button onClick={() => signIn('google')}>Sign in with Google</button>
+          <button
+            onClick={() =>
+              signIn('google', {
+                callbackUrl: 'http://localhost:3000/groovies',
+              })
+            }
+          >
+            Sign in with Google
+          </button>
         </>
       )}
       {session && (
