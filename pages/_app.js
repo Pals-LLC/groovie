@@ -1,11 +1,14 @@
 import { Provider as AuthProvider } from 'next-auth/client';
+import { GlobalStyle, CSSReset } from '../styles/globals';
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
-    <AuthProvider session={pageProps.session}>
-      <Component {...pageProps} />
-    </AuthProvider>
+      <AuthProvider session={pageProps.session}>
+        <Component {...pageProps} />
+        <GlobalStyle />
+        <CSSReset />
+      </AuthProvider>
   );
 }
 
-export default MyApp;
+export default App;
