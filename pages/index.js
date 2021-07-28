@@ -28,8 +28,8 @@ const Home = () => {
         <Image
           src={groovie}
           alt='Groovie Movie logo'
-          width={300}
-          height={300}
+          width={320}
+          height={240}
         />
         <Link href='/search' passHref>
           <NavLink>Pick a Flick</NavLink>
