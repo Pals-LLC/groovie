@@ -8,8 +8,8 @@ export default async function getUserIDHandler(req, res) {
       values: [accessToken],
     };
     const queryResult = await db.query(queryString);
-    const results = queryResult.rows[0].user_id;
-    res.status(200).json({ user_id: results });
+    const userID = queryResult.rows[0].user_id;
+    res.status(200).json(userID);
   } catch (e) {
     console.error(`Error fetching user ID from Sessions table: ${e}`);
   }
