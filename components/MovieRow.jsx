@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
 const MovieRow = ({ movie }) => {
   const user = useSelector((state) => state.user);
@@ -7,9 +7,9 @@ const MovieRow = ({ movie }) => {
     // TODO: redirect to sign in page if a user is not signed in
     if (!user.id) return;
 
-    const res = await fetch('/api/addToGroovies', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+    const res = await fetch("/api/addToGroovies", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ movie, user }),
     });
   };
