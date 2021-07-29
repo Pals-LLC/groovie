@@ -42,13 +42,14 @@ const Search = () => {
           />
           <Spacer size='16px' />
           <SearchButton onClick={searchClickHandler}>Search</SearchButton>
-          <div>
+          <Spacer size='30px' />
+          <ResultsBox>
             {!searchResults
               ? 'No movies found :('
               : searchResults.map((movie) => (
                   <MovieRow key={movie.imdbID} movie={movie} />
                 ))}
-          </div>
+          </ResultsBox>
         </Main>
       </Grid>
     </>
@@ -60,6 +61,7 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 24px;
 `;
 
 const SearchInput = styled.input`
@@ -83,6 +85,16 @@ const SearchButton = styled.button`
     background-color: ${COLORS.cream};
     color: ${COLORS.soil};
   }
+`;
+
+const ResultsBox = styled.div`
+  flex-basis: 70%;
+  width: 100%;
+  border: 8px solid ${COLORS.aqua};
+  outline: 8px solid ${COLORS.clementine};
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
 `;
 
 export default Search;

@@ -6,7 +6,9 @@ import { useSession } from 'next-auth/client';
 import Head from 'next/head';
 import { Grid } from '../components/Layout';
 import Header from '../components/Header';
+import Spacer from '../components/Spacer';
 import searchIcon from '../public/icons/search.svg';
+import { COLORS } from '../styles/colors';
 
 const Groovies = () => {
   const [groovies, setGroovies] = useState([]);
@@ -26,8 +28,6 @@ const Groovies = () => {
       })
         .then((res) => res.json())
         .then((userID) => dispatch(updateUser(userID)));
-
-      
     }
   }, [session, dispatch]);
 
@@ -39,7 +39,9 @@ const Groovies = () => {
       <Grid>
         <Header icon={searchIcon} nav='/search' label='Search' />
         <Main>
-          <h1>Groovies</h1>
+          <h1>My Groovies</h1>
+          <Spacer size='24px' />
+          <MoviesBox></MoviesBox>
         </Main>
       </Grid>
     </>
@@ -51,6 +53,15 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 24px;
+`;
+
+const MoviesBox = styled.div`
+  flex-basis: 85%;
+  width: 100%;
+  border: 8px solid ${COLORS.aqua};
+  outline: 8px solid ${COLORS.clementine};
+  display: flex;
 `;
 
 export default Groovies;
