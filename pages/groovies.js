@@ -1,7 +1,10 @@
+import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateUser } from '../redux/actions/actionCreators';
 import { useSession } from 'next-auth/client';
+import Head from 'next/head';
+import { Grid } from '../components/Layout';
 import Header from '../components/Header';
 import searchIcon from '../public/icons/search.svg';
 
@@ -26,14 +29,26 @@ const Groovies = () => {
     }
   }, [session, dispatch]);
 
-  useEffect(() => {}, []);
-
   return (
     <>
-      <Header icon={searchIcon} nav='/search' />
-      <h1>Groovies</h1>
+      <Head>
+        <title>My Groovies | Groovie Movie</title>
+      </Head>
+      <Grid>
+        <Header icon={searchIcon} nav='/search' label='Search' />
+        <Main>
+          <h1>Groovies</h1>
+        </Main>
+      </Grid>
     </>
   );
 };
+
+const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default Groovies;

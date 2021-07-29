@@ -7,7 +7,13 @@ const Layout = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 24px;
 `;
 
+const Grid = styled.div`
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 84px 1fr;
+`;
 
-export default Layout;
+export { Layout, Grid };
