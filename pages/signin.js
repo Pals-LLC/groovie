@@ -1,4 +1,4 @@
-import { signIn, signOut, useSession } from 'next-auth/client';
+import { signIn, signOut, useSession } from "next-auth/client";
 
 const SignIn = () => {
   const [session, loading] = useSession();
@@ -10,8 +10,8 @@ const SignIn = () => {
           Not signed in <br />
           <button
             onClick={() =>
-              signIn('google', {
-                callbackUrl: 'http://localhost:3000/groovies',
+              signIn("google", {
+                callbackUrl: "http://localhost:3000/groovies",
               })
             }
           >
@@ -22,7 +22,7 @@ const SignIn = () => {
       {session && (
         <>
           Signed in as {session.user.email} <br />
-          <button onClick={() => signOut('google')}>Sign out</button>
+          <button onClick={() => signOut("google")}>Sign out</button>
         </>
       )}
     </>
