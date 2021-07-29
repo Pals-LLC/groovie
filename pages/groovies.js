@@ -26,6 +26,8 @@ const Groovies = () => {
       })
         .then((res) => res.json())
         .then((userID) => dispatch(updateUser(userID)));
+
+      
     }
   }, [session, dispatch]);
 

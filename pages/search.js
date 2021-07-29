@@ -43,9 +43,11 @@ const Search = () => {
           <Spacer size='16px' />
           <SearchButton onClick={searchClickHandler}>Search</SearchButton>
           <div>
-            {searchResults.map((movie) => (
-              <MovieRow key={movie.imdbID} movie={movie} />
-            ))}
+            {!searchResults
+              ? 'No movies found :('
+              : searchResults.map((movie) => (
+                  <MovieRow key={movie.imdbID} movie={movie} />
+                ))}
           </div>
         </Main>
       </Grid>
