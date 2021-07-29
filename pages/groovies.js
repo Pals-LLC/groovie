@@ -1,15 +1,15 @@
-import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { updateUser } from "../redux/actions/actionCreators";
-import { useSession } from "next-auth/client";
-import Head from "next/head";
-import { Grid } from "../components/Layout";
-import Header from "../components/Header";
-import Spacer from "../components/Spacer";
-import searchIcon from "../public/icons/search.svg";
-import { COLORS } from "../styles/colors";
-import GroovieRow from "../components/GroovieRow";
+import styled from 'styled-components';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateUser } from '../redux/actions/actionCreators';
+import { useSession } from 'next-auth/client';
+import Head from 'next/head';
+import { Grid } from '../components/Layout';
+import Header from '../components/Header';
+import Spacer from '../components/Spacer';
+import searchIcon from '../public/icons/search.svg';
+import { COLORS } from '../styles/colors';
+import GroovieRow from '../components/GroovieRow';
 
 const Groovies = () => {
   const [groovies, setGroovies] = useState([]);
@@ -19,10 +19,10 @@ const Groovies = () => {
 
   useEffect(() => {
     if (session) {
-      fetch("api/getUserID", {
-        method: "POST",
+      fetch('api/getUserID', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ accessToken: session.accessToken }),
       })
@@ -42,16 +42,23 @@ const Groovies = () => {
         <title>My Groovies | Groovie Movie</title>
       </Head>
       <Grid>
-        <Header icon={searchIcon} nav="/search" label="Search" />
+        <Header icon={searchIcon} nav='/search' label='Search' />
         <Main>
-          <h1>My Groovies</h1>
-          <Spacer size="24px" />
+          <h1>
+            {session ? `${session.user.name.split(' ')[0]}'s` : 'My'} Groovies
+          </h1>
+          <Spacer size='24px' />
           <MoviesBox>
             {!session ? (
               <p>Not Signed In</p>
             ) : (
               groovies.map((groovie) => (
-                <GroovieRow key={groovie.title} movie={groovie} />
+                <GroovieRow
+                  key={groovie.title}
+                  movie={groovie}
+                  allGroovies={groovies}
+                  setGroovies={setGroovies}
+                />
               ))
             )}
           </MoviesBox>
@@ -76,6 +83,7 @@ const MoviesBox = styled.div`
   outline: 8px solid ${COLORS.clementine};
   display: flex;
   flex-direction: column;
+  padding: 16px;
 `;
 
 export default Groovies;
