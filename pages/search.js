@@ -17,7 +17,10 @@ const Search = () => {
   const searchClickHandler = () => {
     fetch(`/api/search?searchInput=${searchInput}`)
       .then((res) => res.json())
-      .then((results) => setSearchResults(results.Search))
+      .then((results) => {
+        setSearchResults(results.Search);
+        setSearchInput('');
+      })
       .catch((err) => console.error(err));
   };
 
