@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import MovieRow from '../components/MovieRow';
-import groovie from '../public/images/groovie.svg';
+import Header from '../components/Header';
+import MovieRow from '../components/movieRow';
+import videoIcon from '../public/icons/video.svg';
 
 const Search = () => {
   const [searchInput, setSearchInput] = useState('');
@@ -18,18 +17,10 @@ const Search = () => {
 
   return (
     <>
-      <header>
-        <Image
-            src={groovie}
-            alt='Groovie Movie logo'
-            width={160}
-            height={120}
-          />
-        <Link href='/groovies' passHref>
-          <a>My Groovies</a>
-        </Link>
-      </header>
-
+      <Head>
+        <title>Search | Groovie Movie</title>
+      </Head>
+      <Header icon={videoIcon} nav='/groovies' />
       <h1>searchy</h1>
       <input
         type='text'
@@ -39,9 +30,10 @@ const Search = () => {
       <button onClick={searchClickHandler}>PUSH ME</button>
 
       <div>
-        {searchResults.map(movie => <MovieRow key={movie.imdbID} movie={movie} />)}
-      </div>  
-
+        {searchResults.map((movie) => (
+          <MovieRow key={movie.imdbID} movie={movie} />
+        ))}
+      </div>
     </>
   );
 };
